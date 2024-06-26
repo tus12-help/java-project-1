@@ -6,123 +6,86 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login</title>
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.min.css" integrity="sha512-FOS5ANNUsuvefA5Fm6hZBLsxqfF105LIysEgV8VNz29jZLVYIhI+MOLKPBmMXgkHhARFHf5pE7KbXOLE6TXW0A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha512-Cy3gSrKCS8aJ7AIaammc0wLXyKRmTa8ntgHvU01Tuz4EdsqVgk/lKzFm/b/8RxOWBaoHI2uGLLU6rXMbqKcGHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.css" integrity="sha512-KsdCRnLXUKDOyOPhhh7EjWSh2Mh/ZI64XwaYQPGyvuQYWBE1FGTCPnUKjLvD+DDQevQdks3US94aYJsIQxTiKg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,shrink-to-fit=no">
+        <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
+        <title>Login</title>
+
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </head>
-     <style>
-             .container1 {
-  display: flex;
-  
- }
- .home{
-  margin-top: 20px;
-  margin-left: 80px;
-}
-div.d {
- 
- margin-top: 40px;
- font-size: 15px;
-  text-align: right;   
-  margin-left: 300px;
-   font-family: Arial, Helvetica, sans-serif;
-  
-} 
-div.d1{
-     margin-top: 40px;
-  text-align: right;  
-  font-size: 15px;
-  margin-right: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-.social a {
-  padding: 0 .5em;
- 
-}
-            </style>
+    
+    </style>
 </head>
-    <body>
-        <div class="container1">
-            <div class="home">
-           <img alt="RNSB" height="100" data-sticky-height="40" data-sticky-top="90" src="img/mybank3.png" />
+<body>
+   <!--<div class="d-flex">
+           <div class="mr-auto p-2"><h3 style="color: #004fd6;"><i class="fa fa-university" aria-hidden="true"></i>MYBANK</h3></div>
+            <div class="p-2" style="color: #004fd6;"><i class="fa fa-phone " aria-hidden="true"></i>12345&nbsp;67890<p>Get Touch With Us..</p></div>
+            <div class="p-2" style="color: #004fd6;"><i class="fa fa-envelope-o" aria-hidden="true"></i>mybank@india.com<p>Send Message Us on..</p></div>
+        </div>-->
+     <nav class="navbar navbar-expand-lg navbar-light bg-primary text-light">
+  <a class="navbar-brand" href="#"><i class="fa fa-university fa-3x" aria-hidden="true">MYBANK</i></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link"href="index.jsp" target="_self">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="register.jsp" target="_self">Register</a>
+      </li>
+      
+    </ul>
+  </div>
+</nav>
+   <br><br><br>
+<div class="container mt-5">
+    <div class="row">
+        <form  action="LoginServlet" method="post" class="col-sm-5" >
+            <h2 class="alert alert-primary text-center p-2">Login</h2>
+            
+                
+            <div>
+                <label for="username" class="form-label">Account Number:</label>
+                <input type="number" class="form-control" name="accno" placeholder="Enter Your AccountNo"  maxlength="12" required="on" autocomplete="off"> 
             </div>
-      <div class="d">
-          <i class="fa fa-phone fa-3x" aria-hidden="true" style="color: #74C0FC;">12345&nbsp;67890</i>
-            <p align="left"> Get in touch with us</p>
-        </div>
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <div class="d1">
-              <i class="fa fa-envelope-o fa-3x" aria-hidden="true"  style="color: #74C0FC;">netbanking@mybankindia.com</i>
-                <p align="left">Send us e-mail on</p>
+            <div>
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" name="password" placeholder="Enter Your password" required="on" maxlength="4" autocomplete="off"> 
             </div>
-        </div>
-             <nav class="navbar navbar-expand-lg navbar-light bg-info">
-            <a class="navbar-brand" href="#"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <a class="navbar-brand" href="register.jsp"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Register</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-              
-              </div>
+            <div>
+                <label for="password" class="form-label">Captcha:</label><br>
+                <img src="captcha-image"><br><br>
+                <input type="text" class="form-control" name="captcha" placeholder="Enter Captcha Code"  autocomplete="off"> 
+            </div><br>
+            <div class="mt-3">
+                <input type="submit" name="Login" class="btn btn-info text-light">
             </div>
-        </nav><br><br><br>
-        <div class="container mt-5">
-            <div class="row">
-                <form  action="LoginServlet" method="post" class="col-sm-5" >
-                    <h2 class="alert alert-info text-center p-2">Login</h2>
-                    <div>
-                        <label for="username" class="form-label">Username:</label>
-                        <input type="text" class="form-control" name="username" placeholder="Enter Your Username" required="on" autocomplete="off"> 
-                    </div>
-                     <div>
-                        <label for="password" class="form-label">Password:</label>
-                        <input type="password" class="form-control" name="password" placeholder="Enter Your password" required="on" maxlength="4" autocomplete="off"> 
-                    </div>
-                    <div>
-                        <label for="password" class="form-label">Captcha:</label><br>
-                        <img src="captcha-image"><br>
-                        <input type="text" class="form-control" name="captcha" placeholder="Enter Captcha Code"  autocomplete="off"> 
-                    </div><br>
-                    <div class="mt-5">
-                        <input type="submit" name="Login" class="btn btn-info text-light">
-                    </div>
-                    <h2 class="text-danger"><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%></h2>
-                     <h2 class="text-danger"><%=(request.getAttribute("error") == null) ? "" : request.getAttribute("error")%></h2>
-                </form>
-                <div class="col-sm-7 text-center">
-                    <h2 class="alert alert-info">Please Read This Instration's...</h2>
-                    <div class="text-sm-left">
-                        1.The URL in your browser address bar begins with "https"<br><br>
-                        2.The address or status bar displays padlock symbol<br><br>
-                        3.Click the padlock to view and verify the security certificate<br><br>
-                        4.The address bar turns green indicating that the site is secured with SSL Certificate that meets the Extended Validation Standard<br><br>
-                        5.Do not provide your username and password anywhere other than this page.<br><br>
-                        6.Your username and password are highly confidential. Never part with them. BANK will never ask for this information.<br><br>
-                    </div>
-                </div>
+            <h2 class="text-danger"><%=(request.getAttribute("errMessage") == null) ? "" : request.getAttribute("errMessage")%></h2>
+            <h2 class="text-danger"><%=(request.getAttribute("error") == null) ? "" : request.getAttribute("error")%></h2>
+        </form>
+        <div class="col-sm-7 text-center">
+            <h2 class="alert alert-primary">Please Read This Instruction's...</h2>
+            <div class="text-sm-left">
+                1.The URL in your browser address bar begins with "https:"<br><br>
+                2.The address or status bar displays padlock symbol<br><br>
+                3.Click the padlock to view and verify the security certificate<br><br>
+                4.The address bar turns green indicating that the site is secured with SSL Certificate that meets the Extended Validation Standard<br><br>
+                5.Do not provide your username and password anywhere other than this page.<br><br>
+                6.Your username and password are highly confidential. Never part with them. BANK will never ask for this information.<br><br>
             </div>
         </div>
-                <div class="container">
-                    <center>
-                        <h2>Follow Us On</h2>
-                           <div class="social">
-                                <a href="#" id="share-fb" class="sharer button"><i class="fa fa-3x fa-facebook-square"></i></a>
-                                <a href="#" id="share-tw" class="sharer button"><i class="fa fa-3x fa-twitter-square"></i></a>
-                                <a href="#" id="share-li" class="sharer button"><i class="fa fa-3x fa-linkedin-square"></i></a>
-                                <a href="#" id="share-gp" class="sharer button"><i class="fa fa-3x fa-google-plus-square"></i></a>
-                                <a href="#" id="share-em" class="sharer button"><i class="fa fa-3x fa-envelope-square"></i></a>
-                            </div>
-                    </center>
-                        </div>
-    </body>
+    </div>
+</div><br><br><br>
+ <%@include file="asset/footer.jsp" %>
+</body>
 </html>
