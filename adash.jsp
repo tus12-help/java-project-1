@@ -3,8 +3,32 @@
     Created on : 29-May-2024, 1:31:02 pm
     Author     : Kiran
 --%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+    response.setHeader("Pragma", "no-cache");
+     HttpSession session1 = request.getSession();
+     try {
+        if ((session1.getAttribute("admin")).toString() == null) {
+            response.sendRedirect("http://localhost:8006/bsc_p3/");
+        }
+        else
+        {
+        %>
+        <%
+        String eid=(String)session1.getAttribute("accno");
+           HttpSession session2=request.getSession();
+           Connection con;
+           PreparedStatement pst;
+            ResultSet rs;
+             Class.forName("com.mysql.jdbc.Driver");
+                        con = DriverManager.getConnection("jdbc:mysql://localhost/banking_system", "root", "");
+                        pst=con.prepareStatement("select * from emp where eid=?");
+                        pst.setString(1,eid);
+                        rs=pst.executeQuery();
+                        
+                            %>
+                            <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -56,7 +80,14 @@
     </ul>
   </div>
 </nav><br><br>
-    <marquee><h1>WELCOME</h1></marquee>
+<%
+    while(rs.next())
+    {
+%>
+    <marquee><h1>WELCOME<%=rs.getString("fname")%></h1></marquee>
+    <%
+        }
+    %>
     <br><br>
     <!--<div class="container">
         <div class="row align-items-center text-center">
@@ -194,7 +225,7 @@
           <div class="card-body text-light">
                  <i class="fa fa-pencil-square-o fa-3x" aria-hidden="true"></i>
             <p class="card-text">Edit employee or admin.</p>
-            <a href="#" class="btn btn-primary">Edit</a>
+            <a href="update.jsp" target="_self" class="btn btn-primary">Edit</a>
           </div>
         </div>
       </div>
@@ -205,5 +236,13 @@
        <%@include file="../asset/footer.jsp" %> 
     </body>
 </html>
+                            <%
+                        
+                       
+        }
+    } catch (Exception e) {
+        response.sendRedirect("http://localhost:8006/bsc_p3/");
+    }
+%>
 
 
