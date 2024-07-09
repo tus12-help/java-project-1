@@ -6,6 +6,22 @@
 
 <%@page import="java.util.Random"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+    response.setHeader("Pragma", "no-cache");
+     HttpSession session1 = request.getSession();
+     try {
+        if ((session1.getAttribute("emp")).toString() == null) {
+            response.sendRedirect("http://localhost:8006/bsc_p3/");
+        }
+        else
+        {
+            
+        }
+    } catch (Exception e) {
+        response.sendRedirect("http://localhost:8006/bsc_p3/");
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,14 +35,13 @@
 
         %>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, shrink-to-fit=no">
+        <meta name="viewport" content="width=device-width,shrink-to-fit=no">
         <!--<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">-->
-        <title>Add New Customer</title>
+        <title>Add</title>
+
+
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/js/bootstrap.min.js" integrity="sha512-Cy3gSrKCS8aJ7AIaammc0wLXyKRmTa8ntgHvU01Tuz4EdsqVgk/lKzFm/b/8RxOWBaoHI2uGLLU6rXMbqKcGHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.css" integrity="sha512-KsdCRnLXUKDOyOPhhh7EjWSh2Mh/ZI64XwaYQPGyvuQYWBE1FGTCPnUKjLvD+DDQevQdks3US94aYJsIQxTiKg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -41,150 +56,158 @@
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-info fixed-top ">
-            <img alt="RNSB" height="100" data-sticky-height="40" data-sticky-top="90" src="img/mybank3.png" />
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-primary text-light">
+            <a class="navbar-brand" href="#"><i class="fa fa-university fa-3x" aria-hidden="true">MYBANK</i></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <div class="fon">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#"><i class="fa fa-users" aria-hidden="true">Account's</i><span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#"><i class="fa fa-address-card" aria-hidden="true">Employee's</i></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#"><i class="fa fa-user" aria-hidden="true">Profile</i></a>
-                        </li>
-                        <li class="nav-item">
-                            <button class="btn btn-danger" align="right"><a href="logout.jsp" class="text-light">Logout</a></button>
-                        </li>
-                    </div>
+                    <li class="nav-item active">
+                        <a class="nav-link"href="http://localhost:8006/bsc_p3/" target="_self">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="register.jsp" target="_self">Customer's</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="view.jsp" target="_self">Employee's</a>
+                    </li>
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="register.jsp" target="_self">Transaction's</a>
+                    </li>
+                    <li class="nav-item active">
+                        <button class="btn btn-danger" align="right"><a href="logout.jsp" class="text-light">Logout</a></button>
+                    </li>
                 </ul>
             </div>
-
-
         </nav>
         <h1><center>New Customer</center></h1>
-        <form action="eadd" method="post">
+        <form action="${pageContext.request.contextPath}/cadd1" method="post" enctype="multipart/form-data">
             <div class="container mt-3  ">
-                <div class="form-row">
+                <div class="form-row"><!-- comment -->
                     <div class="form-group col-md-6">
-                        <label for="inputEmail4">First Name</label>
-                        <input type="text" class="form-control" id="inputEmail4" name="fname" placeholder="First Name" required autocomplete="off">
+                        <label>Account No:-</label>
+                        <input type="number" name="accno" value="<%=randnumtwo%>" class="form-control" readonly>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputPassword4">Last Name</label>
-                        <input type="text" class="form-control" id="inputPassword4" name="lname" placeholder="Last Password" required autocomplete="off">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputPassword4">Account No</label>
-                        <input type="text" class="form-control" id="inputPassword4" value="<%=randnumtwo%>" name="accno" placeholder="Create Username" required autocomplete="off" readonly>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="inputEmail4">D.O.B</label>
-                        <input type="date" class="form-control" name="dateb" id="inputEmail4" name="date">
+                        <label>Enter FirstName</label>
+                        <input type="text" name="fname" placeholder="Enter Firstname" class="form-control" required autocomplete="off">
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputPassword4">QUALIFICATION </label>
-                        <input type="text" class="form-control" id="inputPassword4" name="degree" placeholder="Enter Qualification Of Customer" required autocomplete="off">
+                        <label>Enter LastName</label>
+                        <input type="text" name="lname" placeholder="Enter lastname" class="form-control" required="" autocomplete="off">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputEmail4">Gender</label>
+                        <label>Nominee Name</label>
+                        <input type="text" name="noname" placeholder="Enter Nominee Name" class="form-control" required="" autocomplete="off">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Date of Birth</label>
+                        <input type="date" name="dob" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Account Type</label>
+                        <select name="atype" class="form-control">
+                            <option value="saving">Saving</option>
+                            <option value="Current">Current</option>
+                            
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Gender</label>
                         <div classs="form-control">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="male" id="flexRadioDisabled" checked>
-                                <label class="form-check-label" >
-                                    Male
-                                </label>
-
+                                <input type="radio" name="gender" value="Male" class="form-check-input" checked><label>Male</label> 
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="female" id="flexRadioDisabled">
-                                <label class="form-check-label">
-                                    Female
-                                </label>
+                                <input type="radio" name="gender" class="form-check-input"  value="Female"><label>Female</label>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="other" id="flexRadioDisabled">
-                                <label class="form-check-label">
-                                    Other   
-                                </label>
+                            <div class="form-check form-check-inline"><!-- comment -->
+                                <input type="radio" name="gender" class="form-check-input"  value="Other"><label>Other</label>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="form-group col-md-6">
 
-                <div class="form-group">
-                    <label for="inputAddress">Address</label>
-                    <input type="text" class="form-control" id="inputAddress" name="address1" placeholder="1234 Main St">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="inputAddress2">Address 2</label>
-                    <input type="text" class="form-control" id="inputAddress2" name="address2" placeholder="Apartment, studio, or floor">
+                <label>Enter Address</label>
+                <input type="text" name="address" placeholder="Enter Address" class="form-control" required="" autocomplete="off">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Enter Mobile No</label>
+                        <input type="number" name="mobile" placeholder="Enter Contact" class="form-control" required="" autocomplete="off">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Enter E-mail Address</label> 
+                        <input type="email" name="email" placeholder="Enter Email" class="form-control" required="" autocomplete="off">
+                    </div>
                 </div>
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="inputCity">Contact No</label>
-                        <input type="number" class="form-control" name="mobile" id="inputCity" required autocomplete="off">
+                        <label>Account Opening Date</label>
+                        <input type="date" name="enrolld" class="form-control">
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="inputCity">E-mail</label>
-                        <input type="email" class="form-control" name="email" id="inputCity" required autocomplete="off">
+                        <label>Aadhar No</label>
+                        <input type="number" name="aadhar" placeholder="Enter aadhar no" class="form-control" required="" autocomplete="off"><br>
                     </div>
 
-                    <div class="form-group col-md-6">
-                        <label for="inputCity">Account Opening Date</label>
-                        <input type="date" class="form-control" name="openacc">
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Customer Photo:-</label>
-                        <input type="file" name="cimage" class="form-control" required="on">
-                    </div> 
-                    <div class="form-group col-md-6">
-                        <label>Aadhar No.</label>
-                        <input type="number" name="aadhano" placeholder="Enter Aadhar no." class="form-control" required="on">
-                    </div> 
-                    <div class="form-group col-md-6">
-                        <label>Select Account Type</label>
-
-                        <select name="acctype" class="form-control" id="" required="">
-                            <option name="none">--Select Type--</option>
-                            <option value="saving">Saving</option>
-                            <option value="current">Current</option>
-
-                        </select>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Select Religion</label>
-                        <select name="religion" class="form-control" id="" required="">
-                            <option name="none">--Select Please--</option>
-                            <option value="hindu">Hindu</option>
-                            <option value="muslim">Muslim</option>
-                            <option value="sikh">Sikh</option>
-                            <option value="christian">Christian</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
                 </div>
-
-
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>religion</label>
+                        <select name="religion" class="form-control">
+                            <option value="Hindu">Hindu</option>
+                            <option value="Muslim">Muslim</option>
+                            <option value="Sikh">Sikh</option>
+                            <option value="Christian">Christian</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group col-md-6">
+                        <label>Role</label> 
+                        <input type="text" name="roll" class="form-control" value="user" readonly>
+                    </div>
+                    
+                    </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>Account Opening Balance</label> 
+                        <input type="amount" name="bal" min="500"class="form-control input-sm"  autocomplete="off" required>
+                    </div>
+                
+               
+                    <div class="form-group col-md-6">
+                        <label>Photo</label> 
+                        <input type="file" name="cimage" class="form-control"  required>
+                    </div>
+               </div>
                 <div class="row">
-                    <div class="col-6">
-                        <input type="submit" name="submit" value="Register" class="btn btn-primary w-100">
-                    </div>
-                    <div class="col-6">
-                        <input type="reset" name="clear" value="Clear" class="btn btn-danger w-100">
-                    </div>
-                </div>    
+           <div class="col-6">
+               <input type="submit" name="submit" value="Register" class="btn btn-primary w-100">
+           </div>
+           <div class="col-6">
+               <input type="reset" name="clear" value="Clear" class="btn btn-danger w-100">
+           </div>
+       </div>    
+                    
             </div>
+            
+
+
+            
+                
         </form>
+
     </div>
 </body>
 </html>
