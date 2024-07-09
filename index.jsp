@@ -5,6 +5,10 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+     response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+    response.setHeader("Pragma", "no-cache");
+%>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -31,7 +35,7 @@
             <div class="p-2" style="color: #004fd6;"><i class="fa fa-envelope-o" aria-hidden="true"></i>mybank@india.com<p>Send Message Us on..</p></div>
         </div>-->
      <nav class="navbar navbar-expand-lg navbar-light bg-primary text-light">
-  <a class="navbar-brand" href="#"><i class="fa fa-university fa-3x" aria-hidden="true">MYBANK</i></a>
+  <a class="navbar-brand" href="#"><i class="fa fa-university fa-3x" style="color:white"aria-hidden="true">MYBANK</i></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
      <span class="navbar-toggler-icon"></span>
   </button>
@@ -60,7 +64,7 @@
             </div>
             <div>
                 <label for="password" class="form-label">Password:</label>
-                <input type="password" class="form-control" name="password" placeholder="Enter Your password" required="on" maxlength="4" autocomplete="off"> 
+                <input type="password" class="form-control" name="password" placeholder="Enter Your password" required="on" maxlength="8" autocomplete="off"> 
             </div>
             <div>
                 <label for="password" class="form-label">Captcha:</label><br>
