@@ -72,14 +72,14 @@ public class AccountController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
      //   processRequest(request, response);
-     HttpSession session=request.getSession();
-     String captcha=session.getAttribute("captcha_security").toString();
+     HttpSession session1=request.getSession();
+     String captcha=session1.getAttribute("captcha_security").toString();
      String verifyCaptcha=request.getParameter("captcha");
      if(captcha.equals(verifyCaptcha))
      {
-         request.setAttribute("username",request.getParameter("username"));
-         request.setAttribute("password",request.getParameter("password"));
-       request.getRequestDispatcher("account/success.jsp").forward(request, response);
+          request.setAttribute("accno",request.getParameter("accno"));
+          request.setAttribute("password",request.getParameter("password"));
+          request.getRequestDispatcher("account/success.jsp").forward(request, response);
        
      }
      else{
