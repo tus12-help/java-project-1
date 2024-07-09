@@ -4,8 +4,35 @@
     Author     : Kiran
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+
+<%
+    response.setHeader("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0, post-check=0, pre-check=0");
+    response.setHeader("Pragma", "no-cache");
+     HttpSession session1 = request.getSession();
+     try {
+        if ((session1.getAttribute("emp")).toString() == null) {
+            response.sendRedirect("http://localhost:8006/bsc_p3/");
+        }
+        else
+        {
+        %>
+        <%
+        String eid=(String)session1.getAttribute("accno");
+           HttpSession session2=request.getSession();
+           Connection con;
+           PreparedStatement pst;
+            ResultSet rs;
+             Class.forName("com.mysql.jdbc.Driver");
+                        con = DriverManager.getConnection("jdbc:mysql://localhost/banking_system", "root", "");
+                        pst=con.prepareStatement("select * from emp where eid=?");
+                        pst.setString(1,eid);
+                        rs=pst.executeQuery();
+                        
+                       
+            %>
+            <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*"%>
+            <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
@@ -56,7 +83,15 @@
     </ul>
   </div>
 </nav><br><br>
-    <marquee><h1>WELCOME</h1></marquee>
+<%
+    while(rs.next())
+    {
+%>
+
+    <marquee><h1>WELCOME&nbsp;<%=rs.getString("fname")%></h1></marquee>
+<%
+    }
+%> 
     <br><br>
      <div class="container-fluid">
     <div class="row">
@@ -80,7 +115,7 @@
           <div class="card-body text-light">
               <i class="fa fa-users fa-3x" aria-hidden="true"></i>
             <p class="card-text">View customers.</p>
-            <a href="#" class="btn btn-primary">View</a>
+            <a href="view_cus.jsp" target="_self" class="btn btn-primary">View</a>
           </div>
         </div>
       </div>
@@ -123,7 +158,7 @@
           <div class="card-body text-light">
                <i class="fa fa-trash fa-3x" aria-hidden="true"></i>
             <p class="card-text">remove Customer.</p>
-            <a href="delete.jsp" terget="_self" class="btn btn-primary">Delete</a>
+            <a href="deletecus.jsp" terget="_self" class="btn btn-primary">Delete</a>
           </div>
         </div>
       </div>
@@ -136,7 +171,7 @@
           <div class="card-body text-light">
                  <i class="fa fa-pencil-square-o fa-3x" aria-hidden="true"></i>
             <p class="card-text">Edit Customer.</p>
-            <a href="#" class="btn btn-primary">Edit</a>
+            <a href="editcus.jsp" class="btn btn-primary">Edit</a>
           </div>
         </div>
       </div>
@@ -192,3 +227,10 @@
        <%@include file="../asset/footer.jsp" %> 
     </body>
 </html>
+            <%
+                
+        }
+    } catch (Exception e) {
+        response.sendRedirect("http://localhost:8006/bsc_p3/");
+    }
+%>
