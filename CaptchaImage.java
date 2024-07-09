@@ -47,7 +47,7 @@ public class CaptchaImage extends HttpServlet {
          
          for(int i=0;i<iCircle;i++)
          {
-             g2dImage.setColor(new Color(randChars.nextInt(10),randChars.nextInt(10),randChars.nextInt(255)));
+             g2dImage.setColor(new Color(randChars.nextInt(10),randChars.nextInt(10),randChars.nextInt(10)));
              int iRadius=(int) (Math.random() * iHeight/2.0);
              int iX=(int) (Math.random() * iWidth - iRadius);
              int iY=(int) (Math.random() * iHeight - iRadius);
@@ -68,8 +68,8 @@ public class CaptchaImage extends HttpServlet {
          OutputStream osImage=response.getOutputStream();
          ImageIO.write(biImage,"jpeg",osImage);
          g2dImage.dispose();
-         HttpSession session=request.getSession();
-         session.setAttribute("captcha_security",sImageCode);
+         HttpSession session1=request.getSession();
+         session1.setAttribute("captcha_security",sImageCode);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
